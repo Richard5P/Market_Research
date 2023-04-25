@@ -3,7 +3,8 @@ import datetime
 """
 This file contains the classes, function and variables for
 the user processes for configuring the report calculations. 
-The file is meant to be imported into and called from a parent file for deployment.
+The file is meant to be imported into and called from a parent file
+for deployment.
 """
 
 
@@ -23,7 +24,7 @@ class InvalidDateRange(Exception):
 
 class InvalidRegion(Exception):
     """
-    Raise when years are out of range
+    Raise when region(s) entered are not in list
     """
     pass
 
@@ -72,6 +73,21 @@ def input_years(stat_dict):
                   f'{range_of_years[1]}, please try again')
 
 
+def regions_loaded(stat_dict):
+    """
+    Returns a list of regions
+    Assumes all other report options have same years loaded
+    """
+    regions_loaded = set()
+    for code in stat_dict:
+        if code['stats_code'] == 'popu':
+            for country in code['country_stats']:
+                regions_loaded.add(stat['region_code'])
+        else:
+            continue           
+    return (sorted(regions_loaded))
+
+
 def input_regions(stat_dict):
     """
     Prompts user to select region(s) for report configuration
@@ -89,10 +105,10 @@ def input_regions(stat_dict):
             if(all(regions in report_regions for regions in region_list)):
                 raise InvalidRegion
             else:
-                return (report_regions)     
+                return (report_regions)  
         except InvalidRegion:
             print(f'\nRegions must be from the list and in the same format, '
-                f'please try again')
+                  f'please try again')
 
 
 def input_weights():
