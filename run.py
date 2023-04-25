@@ -24,6 +24,7 @@ from datetime import datetime
 import os
 import getch 
 
+
 def clear_screen():
     '''
     Clears the terminal screen
@@ -39,8 +40,8 @@ def clear_screen():
         os.system('clear')
 
 # copied from Tomislav Dukez https://github.com/tomdu3
-import os
-import getch
+# import os
+# import getch
 
 def key_press():
     """
@@ -64,6 +65,7 @@ def clear_screen():
 
 # end of copy
 
+
 def log_event(event_msg):
     """
     Opens or creates a log file to record errors and operation results 
@@ -79,6 +81,7 @@ def log_event(event_msg):
         return False    
     return True
 
+
 def main():
     """
     Entry and exit for the application
@@ -88,13 +91,16 @@ def main():
     weights = None
     years = None
     regions = None
+    clear_screen()
     user_name = input('Please enter your name:\n')
     log_event('Application Start: '+user_name)
     print(f'\nHello {user_name}')
     stats_dict = import_csv2dict('population')
+    print(f'Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
     rpt_options = run_report(weights, years, regions, stats_dict)
     print(rpt_options)
+
 
 main()

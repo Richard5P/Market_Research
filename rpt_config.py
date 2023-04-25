@@ -1,4 +1,5 @@
 import datetime
+from run import clear_screen, key_press
 
 """
 This file contains the classes, function and variables for
@@ -44,7 +45,6 @@ def years_loaded(stat_dict):
             continue
     first_year = min(years_loaded)
     last_year = max(years_loaded)
-    print(first_year, last_year)
     return ([first_year, last_year])
 
 
@@ -141,7 +141,13 @@ def input_rpt_options(weights, years, regions, stat_dict):
     option functions return a list of values
     """
     print('Next step is to configure your report\n')
+    if key_press():
+        clear_screen()
     weights = input_weights()
+    if key_press():
+        clear_screen()
     years = input_years(stat_dict)
-#    regions = input_regions()
-    return ([weights, years])
+    if key_press():
+        clear_screen() 
+    regions = input_regions(stat_dict)
+    return ([weights, years, regions])
