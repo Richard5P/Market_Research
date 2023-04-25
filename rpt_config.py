@@ -82,6 +82,7 @@ def regions_loaded(stat_dict):
     for code in stat_dict:
         if code['stats_code'] == 'popu':
             for country in code['country_stats']:
+                print(country)
                 regions_loaded.add(country['region_code'])
         else:
             continue
@@ -98,14 +99,16 @@ def input_regions(stat_dict):
     print(f'Please use the exactly the same region code as in the list.')
     print(f'If you would like to report on more than one region, then'
           f'please separate them with commas similarly to the list.')
+    print(region_list)
+    key_press()
     regions_unset = True
     while regions_unset:
         try:
             report_regions = input('Report region(s):\n')
             if (all(regions in report_regions for regions in region_list)):
-                raise InvalidRegion
-            else:
                 return (report_regions)
+            else:
+                raise InvalidRegion
         except InvalidRegion:
             print(f'\nRegions must be from the list and in the same format, '
                   f'please try again')
@@ -141,13 +144,13 @@ def input_rpt_options(weights, years, regions, stat_dict):
     option functions return a list of values
     """
     print('Next step is to configure your report\n')
-    if key_press():
-        clear_screen()
+#    if key_press():
+#        clear_screen()
     weights = input_weights()
-    if key_press():
-        clear_screen()
+#    if key_press():
+#        clear_screen()
     years = input_years(stat_dict)
-    if key_press():
-        clear_screen() 
+#    if key_press():
+#        clear_screen() 
     regions = input_regions(stat_dict)
     return ([weights, years, regions])
