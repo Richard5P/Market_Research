@@ -10,7 +10,7 @@ import csv
 # Contstants
 # Initialise statics dictionary with keys
 STATS = [{'stats_code':'disp',
-        'stats_name':'Disposable Income',
+         'stats_name':'Disposable Income',
         'value_type':'val',
         'country_stats':[{
             'country_code':None ,
