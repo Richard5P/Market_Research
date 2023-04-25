@@ -10,40 +10,29 @@ import csv
 # Contstants
 # Initialise statics dictionary with keys
 STATS = [
-            {'stats_code': 'disp',
-             'stats_name': 'Disposable Income',
-             'value_type': 'val',
+            {'stats_code': 'popu',
+             'stats_name': 'Population',
+             'value_type': 'num',
              'country_stats': [{
-                'country_code': None,
-                'country_name': None,
-                'region_code':  None, 
-                'region_name':  None,
-                'statistic': [{
-                    'year': None,
-                    'value': None
-                }]
-            }]
-        },
-        {'stats_code': 'popu',
-         'stats_name': 'Population',
-         'value_type': 'num',
-         'country_stats': [{
-                'country_code': None,
-                'country_name': None,
-                'region_code':  None, 
-                'region_name':  None,
-                'statistic': [{
-                    'year': None,
-                    'value': None
-                }]
-            }]
-        },
-]
+                  'country_code': None,
+                  'country_name': None,
+                  'region_code':  None,
+                  'region_name':  None,
+                  'statistic': [{
+                      'year': None,
+                      'value': None
+                   }]
+                }
+                ]
+             }
+        ]
+
 
 def load_country_stats(stats_code, data_row, header_row):
     """
     loads the country_stats keys with values from header row in file
     """
+    print(data_row)
     for stat in STATS:
         if stat['stats_code'] == stats_code:
             for country in stat['country_stats']:
@@ -52,6 +41,7 @@ def load_country_stats(stats_code, data_row, header_row):
                 country['region_code'] = data_row[2]
                 country['region_name'] = data_row[3]
                 country['statistics'] = load_statistics(data_row, header_row)
+
 
 def load_statistics(data_row, header_row):
     """
@@ -65,7 +55,8 @@ def load_statistics(data_row, header_row):
     year_row = header_row
     for i in range(4,len(year_row)):
         annual_stats.append({'year':year_row[i],'value':value_row[i]})
-    return(annual_stats)
+    return (annual_stats)
+
 
 def import_csv2dict(stats_name):
     """
@@ -93,4 +84,4 @@ def import_csv2dict(stats_name):
         print(f'Unable to open CSV file. Please contact system manager with error:\n   >>  {e.args[1]}  <<')
         return False  
 
-    return(STATS)                    
+    return (STATS)                    

@@ -54,6 +54,7 @@ def main():
     log_event('Application Start: '+user_name)
     print(f'\nHello {user_name}')
     stats_dict = import_csv2dict('population')
+    print(stats_dict)
     print(f'Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()

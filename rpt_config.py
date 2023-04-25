@@ -79,6 +79,8 @@ def regions_loaded(stat_dict):
     Assumes all other report options have same years loaded
     """
     regions_loaded = set()
+    print(stat_dict)
+    key_press()
     for code in stat_dict:
         if code['stats_code'] == 'popu':
             for country in code['country_stats']:
