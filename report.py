@@ -14,8 +14,8 @@ The features included in this file include:
     - Outputing the results
         rpt_output.py
 """
+
+
 def run_report(weights, years, regions, stats_dict):
-    try:
-        input_rpt_options(weights, years, regions, stats_dict)
-    except:
-        return False
+    rpt_options = input_rpt_options(weights, years, regions, stats_dict)
+    return (rpt_options)

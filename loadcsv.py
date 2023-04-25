@@ -9,34 +9,35 @@ import csv
 
 # Contstants
 # Initialise statics dictionary with keys
-STATS = [{'stats_code':'disp',
-         'stats_name':'Disposable Income',
-        'value_type':'val',
-        'country_stats':[{
-            'country_code':None ,
-	        'country_name': None ,
-	        'region_code': None, 
-	        'region_name': None,
-	        'statistic':[{
-		        'year': None,
-		        'value': None
-		    }]
-        }]
-    },
-    {'stats_code':'popu',
-        'stats_name':'Population',
-        'value_type':'num',
-        'country_stats':[{
-            'country_code':None ,
-	        'country_name': None ,
-	        'region_code': None, 
-	        'region_name': None,
-	        'statistics':[{
-		        'year': None,
-		        'value': None
-		    }]
-        }]
-    }
+STATS = [
+            {'stats_code': 'disp',
+             'stats_name': 'Disposable Income',
+             'value_type': 'val',
+             'country_stats': [{
+                'country_code': None,
+                'country_name': None,
+                'region_code':  None, 
+                'region_name':  None,
+                'statistic': [{
+                    'year': None,
+                    'value': None
+                }]
+            }]
+        },
+        {'stats_code': 'popu',
+         'stats_name': 'Population',
+         'value_type': 'num',
+         'country_stats': [{
+                'country_code': None,
+                'country_name': None,
+                'region_code':  None, 
+                'region_name':  None,
+                'statistic': [{
+                    'year': None,
+                    'value': None
+                }]
+            }]
+        },
 ]
 
 def load_country_stats(stats_code, data_row, header_row):

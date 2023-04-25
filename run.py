@@ -18,52 +18,10 @@ This run.py contains the functions to:
    - allow the user to select another service or exit the app
 """
 
+from utilities import clear_screen, key_press
 from loadcsv import import_csv2dict
-from report import *
+from rpt_config import input_rpt_options
 from datetime import datetime
-import os
-import getch 
-
-
-def clear_screen():
-    '''
-    Clears the terminal screen
-    '''
-
-    # detects if the script is run on MS Windows system
-    # and uses the corresponding command
-    if os.name == 'nt':
-        os.system('cls')
-
-    # for Linux/MacOs different clear command
-    else:
-        os.system('clear')
-
-# copied from Tomislav Dukez https://github.com/tomdu3
-# import os
-# import getch
-
-def key_press():
-    """
-    Pause flow and allow user to clear screen before next feature
-    """
-    print('\nPlease, press any key to clear the screen and continue...')
-    key = getch.getch()
-    return True
-
-def clear_screen():
-    '''
-    Clears the terminal screen
-    '''
-    # detects if the script is run on MS Windows system
-    # and uses the corresponding command
-    if os.name == 'nt':
-        os.system('cls')
-    # for Linux/MacOs different clear command
-    else:
-        os.system('clear')
-
-# end of copy
 
 
 def log_event(event_msg):
@@ -99,7 +57,7 @@ def main():
     print(f'Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
-    rpt_options = run_report(weights, years, regions, stats_dict)
+    rpt_options = input_rpt_options(weights, years, regions, stats_dict)
     print(rpt_options)
 
 

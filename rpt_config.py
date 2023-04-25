@@ -1,5 +1,5 @@
 import datetime
-from run import clear_screen, key_press
+from utilities import key_press, clear_screen
 
 """
 This file contains the classes, function and variables for
