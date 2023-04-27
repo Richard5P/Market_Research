@@ -30,29 +30,36 @@ class InvalidRegion(Exception):
     pass
 
 
-def years_loaded(stat_dict):
+def years_min_max(stat_dict):
     """
     Returns the earliest and lastest statistic years in the dictionary
     Assumes all other report options have same years loaded
     """
+    print(f'min max years\n')
     years_loaded = set()
     for code in stat_dict:
         if code['stats_code'] == 'popu':
             for country in code['country_stats']:
-                for stat in country['statistics']:
+                for stat in country['statistic']:
                     years_loaded.add(stat['year'])
         else:
             continue
+#    years_loaded.remove(None)
+    print(f'\nYears loaded \n')
+    list_years = list(years_loaded)
+    years_sorted = list_years.sort()
+    print(f'Years Sorted: {years_sorted}')
     first_year = min(years_loaded)
     last_year = max(years_loaded)
     return ([first_year, last_year])
 
 
-def input_years(stat_dict):
+def input_years(stats_dict):
     """
     Prompts user for date range report configuration
     """
-    range_of_years = years_loaded(stat_dict)
+    print(f'\n input_years')
+    range_of_years = years_min_max(stats_dict)
     print(f'\nNow choose the range of years:')
     print(f'The range of years studies available for your report are '
           f'from: {range_of_years[0]} to: {range_of_years[1]}')
@@ -73,29 +80,27 @@ def input_years(stat_dict):
                   f'{range_of_years[1]}, please try again')
 
 
-def regions_loaded(stat_dict):
+def regions_loaded(stats_dict):
     """
     Returns a list of regions
     Assumes all other report options have same years loaded
     """
     regions_loaded = set()
-    print(stat_dict)
     key_press()
-    for code in stat_dict:
+    for code in stats_dict:
         if code['stats_code'] == 'popu':
             for country in code['country_stats']:
-                print(country)
                 regions_loaded.add(country['region_code'])
         else:
             continue
     return (sorted(regions_loaded))
 
 
-def input_regions(stat_dict):
+def input_regions(stats_dict):
     """
     Prompts user to select region(s) for report configuration
     """
-    region_list = (regions_loaded(stat_dict))
+    region_list = (regions_loaded(stats_dict))
     print(f'\nNow choose the region or regions to report on.')
     print(f'The following is a list of available regions.')
     print(f'Please use the exactly the same region code as in the list.')
@@ -140,19 +145,13 @@ def input_weights():
             print('\nNumbers only, please try again')
 
 
-def input_rpt_options(weights, years, regions, stat_dict):
+def input_rpt_options(weights, years, regions, stats_dict):
     """
     Collect report options from user
     option functions return a list of values
     """
     print('Next step is to configure your report\n')
-#    if key_press():
-#        clear_screen()
     weights = input_weights()
-#    if key_press():
-#        clear_screen()
-    years = input_years(stat_dict)
-#    if key_press():
-#        clear_screen() 
-    regions = input_regions(stat_dict)
+    years = input_years(stats_dict)
+    regions = input_regions(stats_dict)
     return ([weights, years, regions])

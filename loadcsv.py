@@ -40,16 +40,16 @@ def load_country_stats(stats_code, data_row, header_row):
     """
     loads the country_stats keys with values from header row in file
     """
-    print(data_row)
+#   print(data_row)
     for stat in STATS:
         try:
             if stat['stats_code'] == stats_code:
                 stat['country_stats'].append(
                     {
-                        'country_name' = data_row[1]
-                        'region_code'= data_row[2]
-                        'region_name' = data_row[3]
-                        'statistics' = load_statistics(data_row, header_row)    
+                        'country_name': data_row[1],
+                        'region_code': data_row[2],
+                        'region_name': data_row[3],
+                        'statistic': load_statistics(data_row, header_row)    
                     }
                 )
             else:
@@ -96,6 +96,7 @@ def import_csv2dict(stats_name):
                 else:
                     load_country_stats(stats_code, row, header_row)          
                     continue
+            return(STATS)
 
     except OSError as e:
         print(f'Unable to open CSV file. Please contact system manager with'
