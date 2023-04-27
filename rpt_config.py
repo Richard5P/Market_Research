@@ -35,7 +35,6 @@ def years_min_max(stat_dict):
     Returns the earliest and lastest statistic years in the dictionary
     Assumes all other report options have same years loaded
     """
-    print(f'min max years\n')
     years_loaded = set()
     for code in stat_dict:
         if code['stats_code'] == 'popu':
@@ -44,11 +43,7 @@ def years_min_max(stat_dict):
                     years_loaded.add(stat['year'])
         else:
             continue
-#    years_loaded.remove(None)
-    print(f'\nYears loaded \n')
-    list_years = list(years_loaded)
-    years_sorted = list_years.sort()
-    print(f'Years Sorted: {years_sorted}')
+    years_loaded.remove(None)
     first_year = min(years_loaded)
     last_year = max(years_loaded)
     return ([first_year, last_year])
@@ -58,13 +53,10 @@ def input_years(stats_dict):
     """
     Prompts user for date range report configuration
     """
-    print(f'\n input_years')
     range_of_years = years_min_max(stats_dict)
-    print(f'\nNow choose the range of years:')
-    print(f'The range of years studies available for your report are '
-          f'from: {range_of_years[0]} to: {range_of_years[1]}')
-    print(f'\nPlease enter a start year and an end year within that '
-          f'range (inclusive)')
+    print(f'\nNow set the range of years for your report')
+    print(f'\nPlease enter a start year and an end year between '
+        f'{range_of_years[0]} to: {range_of_years[1]} (inclusive)')
     years_unset = True
     while years_unset:
         try:
@@ -76,8 +68,8 @@ def input_years(stats_dict):
             else:
                 return ([start_year, end_year])
         except InvalidDateRange:
-            print(f'\nYears must be between {range_of_years[0]} and )'
-                  f'{range_of_years[1]}, please try again')
+            print(f'\nYears must be between {range_of_years[0]} and '
+                f'{range_of_years[1]}, please try again')
 
 
 def regions_loaded(stats_dict):
@@ -86,14 +78,16 @@ def regions_loaded(stats_dict):
     Assumes all other report options have same years loaded
     """
     regions_loaded = set()
-    key_press()
     for code in stats_dict:
         if code['stats_code'] == 'popu':
             for country in code['country_stats']:
                 regions_loaded.add(country['region_code'])
         else:
             continue
-    return (sorted(regions_loaded))
+    regions_loaded.remove(None)
+    regions_sorted = list(regions_loaded)
+    print(regions_sorted.)
+    return (regions_sorted)
 
 
 def input_regions(stats_dict):
@@ -104,10 +98,9 @@ def input_regions(stats_dict):
     print(f'\nNow choose the region or regions to report on.')
     print(f'The following is a list of available regions.')
     print(f'Please use the exactly the same region code as in the list.')
-    print(f'If you would like to report on more than one region, then'
+    print(f'If you would like to report on more than one region, then '
           f'please separate them with commas similarly to the list.')
     print(region_list)
-    key_press()
     regions_unset = True
     while regions_unset:
         try:
