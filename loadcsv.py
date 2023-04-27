@@ -28,19 +28,36 @@ STATS = [
         ]
 
 
+class UnknownStatsType(Exception):
+    """
+    Raise when stat_type is not found
+    """
+    pass
+
+
+
 def load_country_stats(stats_code, data_row, header_row):
     """
     loads the country_stats keys with values from header row in file
     """
     print(data_row)
     for stat in STATS:
-        if stat['stats_code'] == stats_code:
-            for country in stat['country_stats']:
-                country['country_code'] = data_row[0]
-                country['country_name'] = data_row[1]
-                country['region_code'] = data_row[2]
-                country['region_name'] = data_row[3]
-                country['statistics'] = load_statistics(data_row, header_row)
+        try:
+            if stat['stats_code'] == stats_code:
+                stat['country_stats'].append(
+                    {
+                        'country_name' = data_row[1]
+                        'region_code'= data_row[2]
+                        'region_name' = data_row[3]
+                        'statistics' = load_statistics(data_row, header_row)    
+                    }
+                )
+            else:
+                raise UnknownStatsType
+        
+        except UnknownStatsType:
+            log_event("Load error: file contains unknown type of statistic")
+            return False
 
 
 def load_statistics(data_row, header_row):
@@ -53,8 +70,8 @@ def load_statistics(data_row, header_row):
     annual_stats = []
     value_row = data_row
     year_row = header_row
-    for i in range(4,len(year_row)):
-        annual_stats.append({'year':year_row[i],'value':value_row[i]})
+    for i in range(4, len(year_row)):
+        annual_stats.append({'year': year_row[i], 'value': value_row[i]})
     return (annual_stats)
 
 
@@ -81,7 +98,7 @@ def import_csv2dict(stats_name):
                     continue
 
     except OSError as e:
-        print(f'Unable to open CSV file. Please contact system manager with error:\n   >>  {e.args[1]}  <<')
-        return False  
-
-    return (STATS)                    
+        print(f'Unable to open CSV file. Please contact system manager with'
+            f' error:\n   >>  {e.args[1]}  <<')
+        return False
+    
