@@ -86,7 +86,8 @@ def regions_loaded(stats_dict):
             continue
     regions_loaded.remove(None)
     regions_sorted = list(regions_loaded)
-    print(regions_sorted.)
+    regions_sorted.sort()
+    print(f'loaded: {regions_loaded} \nsorted: {regions_sorted}')
     return (regions_sorted)
 
 
@@ -105,6 +106,7 @@ def input_regions(stats_dict):
     while regions_unset:
         try:
             report_regions = input('Report region(s):\n')
+            print(report_regions, region_list)
             if (all(regions in report_regions for regions in region_list)):
                 return (report_regions)
             else:
@@ -112,6 +114,9 @@ def input_regions(stats_dict):
         except InvalidRegion:
             print(f'\nRegions must be from the list and in the same format, '
                   f'please try again')
+        finally:
+            regions_unset = False
+            print(report_regions)
 
 
 def input_weights():
