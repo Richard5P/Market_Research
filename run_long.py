@@ -30,13 +30,13 @@ def log_event(event_msg):
     for session.
     """
     try:
-        with open('logfile.txt','+a') as log:
+        with open('logfile.txt', '+a') as log:
             now = datetime.now()
             rundate = now.strftime('%m/%d/%Y %H:%M:%S%f')
             log.write('\n' + rundate + '\t'+ event_msg)
     except OSError as e:
         print(f'Unable to open log file. Please contact system manager with error:\n   >>  {e.args[1]}  <<')
-        return False    
+        return False  
     return True
 
 
@@ -56,10 +56,8 @@ def main():
     stats_dict = import_csv2dict('population')
     print(f'Your data is ready for you to configure your report.')
     if key_press():
-        clear_screen()
+       clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
     print(rpt_options)
 
-
 main()
-

@@ -1,5 +1,5 @@
 import datetime
-from utilities import key_press, clear_screen
+from utilities import key_press, clear_screen, lists_intersection
 
 """
 This file contains the classes, function and variables for
@@ -56,7 +56,7 @@ def input_years(stats_dict):
     range_of_years = years_min_max(stats_dict)
     print(f'\nNow set the range of years for your report')
     print(f'\nPlease enter a start year and an end year between '
-        f'{range_of_years[0]} to: {range_of_years[1]} (inclusive)')
+          f'{range_of_years[0]} to: {range_of_years[1]} (inclusive)')
     years_unset = True
     while years_unset:
         try:
@@ -69,7 +69,7 @@ def input_years(stats_dict):
                 return ([start_year, end_year])
         except InvalidDateRange:
             print(f'\nYears must be between {range_of_years[0]} and '
-                f'{range_of_years[1]}, please try again')
+                  f'{range_of_years[1]}, please try again')
 
 
 def regions_loaded(stats_dict):
@@ -95,28 +95,28 @@ def input_regions(stats_dict):
     """
     Prompts user to select region(s) for report configuration
     """
-    region_list = (regions_loaded(stats_dict))
+    region_list = regions_loaded(stats_dict)
     print(f'\nNow choose the region or regions to report on.')
-    print(f'The following is a list of available regions.')
-    print(f'Please use the exactly the same region code as in the list.')
+    print(f'Please enter one or more of the following region codes.')
     print(f'If you would like to report on more than one region, then '
           f'please separate them with commas similarly to the list.')
     print(region_list)
     regions_unset = True
     while regions_unset:
         try:
-            report_regions = input('Report region(s):\n')
-            print(report_regions, region_list)
-            if (all(regions in report_regions for regions in region_list)):
+            input_regions = (input('Report region(s):\n')).split(',')
+            report_regions = list(set(input_regions) & set(region_list))
+            if (len(report_regions) > 0):
                 return (report_regions)
             else:
                 raise InvalidRegion
         except InvalidRegion:
-            print(f'\nRegions must be from the list and in the same format, '
+            print(f'\nRegions must be from the list and in the same format,\n'
+                  f'Valid region codes are: \n {region_list}\n'
+                  f'You entered: \n {report_regions}\n)'  
                   f'please try again')
-        finally:
-            regions_unset = False
-            print(report_regions)
+            continue
+    return (report_regions)
 
 
 def input_weights():
