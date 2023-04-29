@@ -87,7 +87,6 @@ def regions_loaded(stats_dict):
     regions_loaded.remove(None)
     regions_sorted = list(regions_loaded)
     regions_sorted.sort()
-    print(f'loaded: {regions_loaded} \nsorted: {regions_sorted}')
     return (regions_sorted)
 
 
@@ -100,11 +99,13 @@ def input_regions(stats_dict):
     print(f'Please enter one or more of the following region codes.')
     print(f'If you would like to report on more than one region, then '
           f'please separate them with commas similarly to the list.')
-    print(region_list)
+    display_list = ','.join([str(elem) for elem in region_list])
+    print(display_list)
     regions_unset = True
     while regions_unset:
         try:
-            input_regions = (input('Report region(s):\n')).split(',')
+            input_regions = (input('Report region(s):\n')).upper()
+            input_regions = input_regions.split(',')
             report_regions = list(set(input_regions) & set(region_list))
             if (len(report_regions) > 0):
                 return (report_regions)
@@ -112,8 +113,8 @@ def input_regions(stats_dict):
                 raise InvalidRegion
         except InvalidRegion:
             print(f'\nRegions must be from the list and in the same format,\n'
-                  f'Valid region codes are: \n {region_list}\n'
-                  f'You entered: \n {report_regions}\n)'
+                  f'Valid region codes are: \n {display_list}\n'
+                  f'You entered: \n {input_regions}\n)'
                   f'please try again')
             continue
     return (report_regions)
