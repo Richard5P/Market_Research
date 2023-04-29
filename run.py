@@ -1,9 +1,10 @@
 """
 The app is a Market Research sample tool to demonstrate how Python can be used
 to prepare and present a typical market reseach report for business analysis.
-There are two primary services: 
+There are two primary services:
     1) Import statistical demographical data from an external file
-        Note: input files were created from XLXS spreadsheet and saved in CSV UTF-8(Comma delimited) format
+        Note: input files were created from XLXS spreadsheet and saved in
+        CSV UTF-8(Comma delimited) format
     2) Prepare and present an ad-hoc market analysis report
 The functions for each of those 2 services are contained in separate .py files.
     1)loadcsv.py
@@ -26,17 +27,18 @@ from datetime import datetime
 
 def log_event(event_msg):
     """
-    Opens or creates a log file to record errors and operation results 
+    Opens or creates a log file to record errors and operation results
     for session.
     """
     try:
-        with open('logfile.txt','+a') as log:
+        with open('logfile.txt', '+a') as log:
             now = datetime.now()
             rundate = now.strftime('%m/%d/%Y %H:%M:%S%f')
-            log.write('\n' + rundate + '\t'+ event_msg)
+            log.write('\n' + rundate + '\t' + event_msg)
     except OSError as e:
-        print(f'Unable to open log file. Please contact system manager with error:\n   >>  {e.args[1]}  <<')
-        return False    
+        print(f'Unable to open log file. Please contact system manager with '
+              f'error:\n   >>  {e.args[1]}  <<')
+        return False
     return True
 
 
@@ -62,4 +64,3 @@ def main():
 
 
 main()
-
