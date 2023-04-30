@@ -29,8 +29,11 @@ def key_press():
     Pause flow and allow user to clear screen before next feature
     """
     print('\nPlease, press any key to clear the screen and continue...')
-    getch.getch()    # return k= to interigate key pressed
-    return True
+    key_pressed = getch.getch()    # return k= to interigate key pressed
+    if key_pressed.upper() == 'C':
+        return False
+    else:
+        return True
 
 # end of copy
 
