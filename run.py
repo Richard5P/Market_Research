@@ -63,13 +63,14 @@ def main():
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
     clear_screen()
     """
+    user_name = "Rick"
     rpt_options = [[20, 30, 50], ['2012', '2014'], ['ECA', 'MEA']]
     print(f'Please confirm your report configuration.\n')
     print(f'\t Disposable Income: {rpt_options[0][0]}%'
           f', Population: {rpt_options[0][1]}%'
           f', Urbanisation: {rpt_options[0][2]}%')
-    print(f'Years: {rpt_options[1][0]} to {rpt_options[1][1]}')
-    print(f'Regions: {rpt_options[2]}')
+    print(f'\tYears: {rpt_options[1][0]} to {rpt_options[1][1]}')
+    print(f'\tRegions: {rpt_options[2]}')
     print(f'\nPress "C" to CANCEL the report. Otherwise,')
     if key_press():
         clear_screen()
@@ -77,5 +78,7 @@ def main():
         log_event('Report cancelled after configuration: '+user_name)
         print('Research Report Cancelled')
         exit()
+    rpt_results = calc_stats(weights, years, regions, stats_dict)
+
 
 main()
