@@ -71,7 +71,6 @@ def main():
     print(f'Years: {rpt_options[1][0]} to {rpt_options[1][1]}')
     print(f'Regions: {rpt_options[2]}')
     print(f'\nPress "C" to CANCEL the report. Otherwise,')
-    
 
 
 main()
