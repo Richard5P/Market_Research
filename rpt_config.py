@@ -1,5 +1,5 @@
 import datetime
-from utilities import key_press, clear_screen, lists_intersection
+from utilities import key_press, clear_screen
 
 """
 This file contains the classes, function and variables for

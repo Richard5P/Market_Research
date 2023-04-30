@@ -36,11 +36,3 @@ def key_press():
         return True
 
 # end of copy
-
-
-def lists_intersection(lst1,  lst2):
-    intersect_lst = list(set(lst1) & set(lst2))
-    if len(intersect_lst) > 0:
-        return (intersect_lst)
-    else:
-        return False
