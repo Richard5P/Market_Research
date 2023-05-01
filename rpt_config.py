@@ -33,9 +33,13 @@ class InvalidRegion(Exception):
 def years_min_max(stat_dict):
     """
     Returns the earliest and lastest statistic years in the dictionary
-    Assumes all other report options have same years loaded
     """
+#   years_loaded = {stat['year'] for stat in stat_dict['statistic']}
     years_loaded = set()
+    for country in stat_dict:
+        for country_stats in country['statistic']:
+            years_loaded.add(country_stats['year'])
+    """
     for code in stat_dict:
         if code['stats_code'] == 'popu':
             for country in code['country_stats']:
@@ -43,6 +47,7 @@ def years_min_max(stat_dict):
                     years_loaded.add(stat['year'])
         else:
             continue
+    """
     years_loaded.remove(None)
     first_year = min(years_loaded)
     last_year = max(years_loaded)
@@ -78,12 +83,8 @@ def regions_loaded(stats_dict):
     Assumes all other report options have same years loaded
     """
     regions_loaded = set()
-    for code in stats_dict:
-        if code['stats_code'] == 'popu':
-            for country in code['country_stats']:
-                regions_loaded.add(country['region_code'])
-        else:
-            continue
+    for country in stats_dict:
+        regions_loaded.add(country['region_code'])
     regions_loaded.remove(None)
     regions_sorted = list(regions_loaded)
     regions_sorted.sort()

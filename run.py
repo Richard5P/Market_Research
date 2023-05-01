@@ -34,7 +34,7 @@ def log_event(event_msg):
         with open('logfile.txt', '+a') as log:
             now = datetime.now()
             rundate = now.strftime('%m/%d/%Y %H:%M:%S%f')
-            log.write('\n' + rundate + '\t' + event_msg)
+            log.write(rundate + '\t' + event_msg)
     except OSError as e:
         print(f'Unable to open log file. Please contact system manager with '
               f'error:\n   >>  {e.args[1]}  <<')
@@ -48,7 +48,6 @@ def main():
     Container and controller for launch of application functions
     """
     # variables to be passed to reports
-    """
     weights = None
     years = None
     regions = None
@@ -61,7 +60,7 @@ def main():
     if key_press():
         clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
-    clear_screen()
+#    clear_screen()
     """
     user_name = "Rick"
     rpt_options = [[20, 30, 50], ['2012', '2014'], ['ECA', 'MEA']]
@@ -79,6 +78,6 @@ def main():
         print('Research Report Cancelled')
         exit()
     rpt_results = calc_stats(weights, years, regions, stats_dict)
-
+    """
 
 main()
