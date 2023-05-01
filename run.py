@@ -84,6 +84,7 @@ def main():
         print('Research Report Cancelled')
         exit()
     rpt_results = calc_stats(rpt_options, stats_dict)
+    print(rpt_results)
 
 
 main()
