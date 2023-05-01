@@ -19,10 +19,11 @@ This run.py contains the functions to:
    - allow the user to select another service or exit the app
 """
 
+from datetime import datetime
 from utilities import clear_screen, key_press
 from loadcsv import import_csv2dict
 from rpt_config import input_rpt_options
-from datetime import datetime
+from rpt_calc import calc_stats
 
 
 def log_event(event_msg):
@@ -34,7 +35,7 @@ def log_event(event_msg):
         with open('logfile.txt', '+a') as log:
             now = datetime.now()
             rundate = now.strftime('%m/%d/%Y %H:%M:%S%f')
-            log.write(rundate + '\t' + event_msg)
+            log.write(rundate + '\t' + event_msg + '\n')
     except OSError as e:
         print(f'Unable to open log file. Please contact system manager with '
               f'error:\n   >>  {e.args[1]}  <<')
@@ -48,6 +49,7 @@ def main():
     Container and controller for launch of application functions
     """
     # variables to be passed to reports
+    """
     weights = None
     years = None
     regions = None
@@ -60,10 +62,14 @@ def main():
     if key_press():
         clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
+    print(rpt_options)
 #    clear_screen()
     """
+    # STUB start
+    stats_dict = import_csv2dict('population')
     user_name = "Rick"
     rpt_options = [[20, 30, 50], ['2012', '2014'], ['ECA', 'MEA']]
+    # STUB end
     print(f'Please confirm your report configuration.\n')
     print(f'\t Disposable Income: {rpt_options[0][0]}%'
           f', Population: {rpt_options[0][1]}%'
@@ -77,7 +83,7 @@ def main():
         log_event('Report cancelled after configuration: '+user_name)
         print('Research Report Cancelled')
         exit()
-    rpt_results = calc_stats(weights, years, regions, stats_dict)
-    """
+    rpt_results = calc_stats(rpt_options, stats_dict)
+
 
 main()
