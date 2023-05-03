@@ -57,6 +57,8 @@ def main():
     user_name = input('Please enter your name:\n')
     log_event('Application Start: '+user_name)
     print(f'\nHello {user_name}')
+    stats_dict = import_csv2dict(stats_type) for stats_type in
+    ['Income', 'Population', 'Urban']
     stats_dict = import_csv2dict('population')
     print(f'Your data is ready for you to configure your report.')
     if key_press():
@@ -66,7 +68,7 @@ def main():
 #    clear_screen()
     """
     # STUB start
-    stats_dict = import_csv2dict('population')
+    stats_dict = import_csv2dict()
     user_name = "Rick"
     rpt_options = [[20, 30, 50], ['2012', '2014'], ['ECA', 'MEA']]
     # STUB end

@@ -12,7 +12,6 @@ def sum_report_data(years, regions, stats_dict):
     type of statistic across the range of years.
     Return a list of lists: [region code, stat code, value sum]
     """
-    print(stats_dict)
     sum_data = []
     sum_value = 0
     for country in stats_dict:
@@ -28,12 +27,8 @@ def sum_report_data(years, regions, stats_dict):
 
 
 def calc_stats(report_options, stats_dict):
-    print('calc_stats')
-    print(report_options)
-    print(report_options[0])
     weights = report_options[0]
     years = report_options[1]
     regions = report_options[2]
     selection_results = sum_report_data(years, regions, stats_dict)
-#    print(selection_results)
     return (selection_results)
