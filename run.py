@@ -69,6 +69,7 @@ def main():
     """
     # STUB start
     stats_dict = import_csv2dict()
+    print(stats_dict)
     user_name = "Rick"
     rpt_options = [[20, 30, 50], ['2012', '2014'], ['ECA', 'MEA']]
     # STUB end

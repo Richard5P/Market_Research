@@ -11,7 +11,6 @@ import csv
 # Initialise statics dictionary with keys
 
 
-
 class UnknownStatsType(Exception):
     """
     Raise when stat_type is not found
@@ -28,14 +27,15 @@ def load_country_stats(stats_dict, stats_code, data_row, header_row):
         'country_name': data_row[1],
         'region_code': data_row[2],
         'region_name': data_row[3],
-        'statistic': load_statistics(stats_dict, stats_code, data_row, header_row)
+        'statistic': load_statistics(stats_dict, stats_code,
+                      data_row, header_row)
     }
     )
 
 
 def load_statistics(stats_dict, stats_code, data_row, header_row):
     """
-    loads annual statistical data for each country from stats_code.csv into 
+    loads annual statistical data for each country from stats_code.csv into
     a list of annual statistics and returns that to the load_country_stats
     function to load with the other country statistics
     uses header row for year value and data rows for values
@@ -44,7 +44,8 @@ def load_statistics(stats_dict, stats_code, data_row, header_row):
     value_row = data_row
     year_row = header_row
     for i in range(4, len(year_row)):
-        stats_dict.append({
+        print(f'\n')
+        annual_stats.append({
             'stats_code': stats_code,
             'year': year_row[i],
             'value': value_row[i]})
@@ -57,7 +58,7 @@ def import_csv2dict():
     Assumes the csv file has headings in the first row for statistics keys
     Calls function to load remaining rows into STATS
     """
-    #create that stats_dict skeleton
+# create that stats_dict skeleton
     stats_dict = [
         {'country_code': None,
          'country_name': None,
@@ -67,7 +68,7 @@ def import_csv2dict():
             'stats_code': None,
             'year': None,
             'value': None
-        }]
+            }]
         }
     ]
 # loop through the various statistitics to load
@@ -86,12 +87,13 @@ def import_csv2dict():
                         first_row = False
                         continue
                     else:
-                        load_country_stats(stats_dict, stats_code, row, header_row)
+                        load_country_stats(stats_dict, stats_code, row,
+                                           header_row)
                         continue
 
         except OSError as e:
-            print(f'Unable to open CSV file. Please contact system manager with'
-                  f' error:\n   >>  {e.args[1]}  <<')
+            print(f'Unable to open CSV file. Please contact system'
+                  f'manager with error:\n  >>  {e.args[1]}  <<')
             return False
 
     return (stats_dict)
