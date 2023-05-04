@@ -6,20 +6,27 @@ deployment.
 """
 
 
-def calc_region(sum_region, region_data, stats_dict):
+def calc_region(country_avg, sum_region, region_data, stats_dict):
     """
-    Checks if region has sum_value and returns it for
+    Checks if region has a sum_value. 
+    If it does then add the country avg to it.
+    Otherwise, set it
+    returns it for
     use in summing region values for report
     """
+    region_value = 0.0
     for i in range(0, len(region_data)):
-        if sum_region in region_data[i].values():
-            sum_value = region_data[i]['sum_value']
+        print(region_data[i], country_avg)
+        if sum_region in region_data[i]:
+            sum_value = region_data[i][2] + country_avg
         else:
-            sum_value = 0
-    return (sum_value)
+            sum_value = country_avg
+        region_data[i]['num_countries'] += 1
+        region_value = sum_value / region_data[i]['num_countries']
+    return (region_value)
 
 
-def avg_report_data(years, regions, stats_dict):
+def sum_report_data(years, regions, stats_dict):
     """
     Using the report options, calculate the average statistic values
     for each region and type of statistic across the range of years.
@@ -28,27 +35,31 @@ def avg_report_data(years, regions, stats_dict):
         country_avg =
             sum_value (for range of years)/number of years
         region_avg =
-            sum country_annual_avg (for countries in regaion)/
+            sum country_avg (for countries in region)/
                 number of countries in region
     Return a list of lists: [region code, stat code, avg value]
     Assumes the stats_dict is sorted by country by region
     """
-    num_years = int(years[1]) - int(years[0])
-    region_data = [{'region': None, 'sum_value': None, 'num_countries': 0}]
-    region_value = 0
+    num_years = float(int(years[1]) - int(years[0]))
+    reg_stat_data = []
+#   region_data = []
+#   region_value = 0.0
     for country in stats_dict:
+        sum_value = 0.0
         if country['region_code'] in regions:
             sum_region = country['region_code']
-            region_value = calc_region(sum_region, region_data, stats_dict)
             for statistic in country['statistic']:
                 sum_stat_code = statistic['stats_code']
                 if statistic['year'] >= years[0] and \
                    statistic['year'] <= years[1]:
-                    sum_value += float(statistic['value'])
+                    print(statistic['value'], sum_value)
+                    sum_value = sum_value + float(statistic['value'])
                 country_avg = sum_value / num_years
-            avg_value = sum_value / num_countries
-            sum_data.append([sum_region, sum_stat_code, avg_value])
-    return (sum_data)
+            reg_stat_data.append([sum_region, sum_stat_code, country_avg])
+#            region_value = calc_region(country_avg, sum_region, region_data,
+#                                       stats_dict)
+#            region_data.append([sum_region, sum_stat_code, region_value])
+    return (reg_stat_data)
 
 
 def calc_stats(report_options, stats_dict):
