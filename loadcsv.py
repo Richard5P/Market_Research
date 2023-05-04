@@ -73,7 +73,7 @@ def import_csv2dict():
     ]
 # loop through the various statistitics to load
     for stats_name in ['income', 'population', 'urban']:
-        stats_code = stats_name[:4]
+        stats_code = stats_name[:4].upper()
         file_name = stats_name + '.csv'
         header_row = []
         try:
