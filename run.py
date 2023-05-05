@@ -58,7 +58,7 @@ def main():
     user_name = user_name.capitalize()
     print(f'\nHello {user_name}')
     stats_dict = import_csv2dict()
-    print(f'Your data is ready for you to configure your report.')
+    print('Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)

@@ -99,16 +99,17 @@ def input_regions(stats_dict):
     print(f'\nNow choose the region or regions to report on.')
     print(f'Please enter one or more of the following region codes.')
     print(f'If you would like to report on more than one region, then '
-          f'please separate them with commas similarly to the list.')
+          f'please separate them with commas, without spaces,'
+          f' similarly to the list below.')
     display_list = ','.join([str(elem) for elem in region_list])
     print(display_list)
     regions_unset = True
     while regions_unset:
         try:
             input_regions = (input('Report region(s):\n')).upper()
-            input_regions = input_regions.split(',')
+            input_regions = input_regions.rsplit(',')
             report_regions = list(set(input_regions) & set(region_list))
-            if (len(report_regions) > 0):
+            if (len(report_regions) == len(input_regions)):
                 return (report_regions)
             else:
                 raise InvalidRegion
@@ -127,8 +128,8 @@ def input_weights():
     """
     print(f'There are 3 report studies available for your report:\n'
           f'\t Disposable Income, Population, Urbanisation\n')
-    print(f'Please enter 3 numbers which total to 100 for\n'
-          f'weighting the percent of each study')
+    print(f'Please enter 3 numbers which total to 100\n'
+          f'  for weighting the percent of each study')
     pct_unset = True
     while pct_unset:
         try:
