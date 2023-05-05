@@ -116,7 +116,7 @@ def input_regions(stats_dict):
         except InvalidRegion:
             print(f'\nRegions must be from the list and in the same format,\n'
                   f'Valid region codes are: \n {display_list}\n'
-                  f'You entered: \n {input_regions}\n)'
+                  f'You entered: \n {input_regions}\n'
                   f'please try again')
             continue
     return (report_regions)
