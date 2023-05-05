@@ -69,7 +69,7 @@ def import_csv2dict():
             'year': None,
             'value': None
             }]
-        }
+         }
     ]
 # loop through the various statistitics to load
     for stats_name in ['income', 'population', 'urban']:
@@ -95,5 +95,4 @@ def import_csv2dict():
             print(f'Unable to open CSV file. Please contact system'
                   f'manager with error:\n  >>  {e.args[1]}  <<')
             return False
-
     return (stats_dict)

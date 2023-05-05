@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "market-research-385811",
+  "private_key_id": "0cac11472cc03e27c8f27342e5856363fcbcd923",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCrpA/hNseroQZK\nVsmF9d8FOxIgVVKoZW6u/1HUvapI0dmgA1ZPMX6iYXRej/GgyjutrQlkR/1jWBI7\ne7kU00pnlcvSe8vrwonP4ZAe8i2cIRTmaefUCzIIw3qcvMsxhzLrlVuY2T66jskH\nupHpBfP3RTi6SeXmwUCWSsor2lASHJHh96wo1ZJNi8VRf7wCJaYFDuBtBqDoQBgw\nFz4uJw4tjoHudAUOy5Pn+7BiwH7ClOWPzrgf4EbBQ1ycouKVp93KAa+I0xBEuYoL\n83/0dPigDva83Lrfxdo4r4OcG19S9I8QreUh67yJcGRetbbAtkT1HZxM8wSiRyBq\ny30rKiZFAgMBAAECggEABYT/m7ryvdKuTJqw3VV0SAtHwHFt+ItWfVspiwFUZgYV\njP8+ecp6K4edweK4HvcR5zpeyHJGNDkjUPVgFMrcpCsdhFXFz32Qh/ZVd6FLFS+9\nJ9G1Ck0X3U9H9J1fnWafHRNPAEHQMhigX1bBFXDDESsRMXBp67tAM/UQvktFcueZ\nzXNoDdJDjRcktLpmWAuEuCBC6Q3Fmxqek2XCVX9jYYwkqq3VNNh0Rn8kZGnSRoxb\nPiI6QHCHrOtFSBWKj/JIb8HXBp5HDONtngxBlQMCjzkQw+wRlOtEOxQL8HCb6yIM\ndD2PvNzgj5YXX9CFsGgAZdm+oeikYBCa+KVrBiBSWwKBgQDZ35fulZgVBo5nslzJ\ntrL7IO2TjdQoeWwwjj9++Ikj8S0hIpaIfIpxYAvmFBEY8rc3CHy6m9/wmxNsJVMi\ncfzEX1nn7XcIYVomStp2lq09ioPO0RPNio3x2/d3Qgepr3c3tsFxNVOnvsAFAxGB\n2kk7r19kgTp1Z30yKSwNaTeWUwKBgQDJrVGmOZ3kXPPLU1NnlOTRcMu4NsFsHmL5\nykB8y10Qcj/ylUOYyqh98aBcnMPXtPGwaZ/ObOM68iS9WCz9+DNX2Qn0X72708Qm\nK+LYQnAkP+v4PsUKH3xmKggn/Pax9xDL3hUG2jztMliNxXSHYzbSv/x5T4tWekJ8\nd99951GOBwKBgD3iY65R8WOvfA16PR7SdR4dqT2rIGLqsk9MaD6xa4q4+1+ZCnb0\nIQK5DEgq1PxoHKBWGc+LbN1Tvv2N0IJNLEW+67OT4KaRuGB+DHV4sPZ0/KFnA5/z\nRgQ3vZ+zMqgA/fTmRSXZxswzwyjpSTTAAuMgGhFbH3avkYEI7slUZISfAoGAYcAd\nBBmHGwmmrNVdZqY3ZgBq7YW0qIft5y6NpS8Yk4Ec16JbWjJYCntUA6+ECQhN4PjB\nGVeTp514C0IyxIJJuHmdJpJFL0XMG8hHshQ5sIg/AlrCPE7Yh9g1jdRBai7bOEUT\nIfgjccBmRYkAGyMOjoW5hL72RVsK4LNlYuv8jn8CgYBJvVsLkx/CIGQi2dx7lMxy\nYHrndt7njvM56JKDah36QdE+g0ULkJ2+3DUmo2mltvSqGgwHZQuwKOYPiA8CPmt3\nI41XKRE8TYaiNPuiuKGuhB0QPug9ejHdgxqNWObrgbG1s3nTv9DDmD+EYOLHbN/C\nKxJxkJw5EwfeB503gtddXg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "market-research@market-research-385811.iam.gserviceaccount.com",
+  "client_id": "103837569831684169422",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/market-research%40market-research-385811.iam.gserviceaccount.com"
+}

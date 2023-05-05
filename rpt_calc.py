@@ -5,11 +5,22 @@ The file is meant to be imported into and called from a parent file for
 deployment.
 """
 
+
 def calc_stat_sum(reg_stat_data):
     """
     Sum values for each region, stat_type
     """
-    return(reg_stat_data)
+    stats_sum = {}
+    for line in reg_stat_data:
+        if line[0] in stats_sum.keys():
+            if line[1] in stats_sum[line[0]].keys():
+                stats_sum[line[0]][line[1]] += line[2]
+            else:
+                stats_sum[line[0]][line[1]] = line[2]
+        else:
+                stats_sum[line[0]] = {line[1]:line[2]}
+    print(stats_sum)
+    return(stats_sum)
 
 
 def calc_reg_stat_data(years, regions, stats_dict):
