@@ -19,7 +19,6 @@ def calc_stat_sum(reg_stat_data):
                 stats_sum[line[0]][line[1]] = line[2]
         else:
             stats_sum[line[0]] = {line[1]: line[2]}
-    print(stats_sum)
     return (stats_sum)
 
 

@@ -55,20 +55,21 @@ def main():
     regions = None
     user_name = input('Please enter your name:\n')
     log_event('Application Start: '+user_name)
+    user_name = user_name.capitalize()
     print(f'\nHello {user_name}')
     stats_dict = import_csv2dict()
-    print(f'Your data is ready for you to configure your report {user_name}')
+    print(f'Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
     print(rpt_options)
     clear_screen()
     print(f'Please confirm your report configuration.\n')
-    print(f'\t Disposable Income: {rpt_options[0][0]}%'
+    print(f'\tDisposable Income: {rpt_options[0][0]}%'
           f', Population: {rpt_options[0][1]}%'
           f', Urbanisation: {rpt_options[0][2]}%')
     print(f'\tYears: {rpt_options[1][0]} to {rpt_options[1][1]}')
-    print(f'\tRegions: {rpt_options[2]}')     
+    print(f'\tRegions: {rpt_options[2]}')
     print(f'\nPress "C" to CANCEL the report. Otherwise,')
     if key_press():
         clear_screen()

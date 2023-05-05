@@ -125,10 +125,10 @@ def input_weights():
     """
     Prompts user for study weight report configuration
     """
-    print(f'There are 3 report studies available for your report:'
+    print(f'There are 3 report studies available for your report:\n'
           f'\t Disposable Income, Population, Urbanisation\n')
-    print(f'Please enter 3 numbers which total to 100 for weighting the'
-          f' percent of each study')
+    print(f'Please enter 3 numbers which total to 100 for\n'
+          f'weighting the percent of each study')
     pct_unset = True
     while pct_unset:
         try:
