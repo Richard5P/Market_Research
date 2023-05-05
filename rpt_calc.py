@@ -36,7 +36,6 @@ def calc_reg_stat_data(years, regions, stats_dict):
                 sum_stat_code = statistic['stats_code']
                 if statistic['year'] >= years[0] and \
                    statistic['year'] <= years[1]:
-                    print(statistic['value'], sum_value)
                     sum_value = sum_value + float(statistic['value'])
                 country_avg = sum_value / num_years
             reg_stat_data.append([sum_region, sum_stat_code, country_avg])

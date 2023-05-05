@@ -55,7 +55,8 @@ def main():
     user_name = input('Please enter your name:\n')
     log_event('Application Start: '+user_name)
     print(f'\nHello {user_name}')
-    stats_dict = import_csv2dict() 
+    stats_dict = import_csv2dict(stats_type) for stats_type in
+    ['Income', 'Population', 'Urban']
     print(f'Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
@@ -67,10 +68,16 @@ def main():
           f', Population: {rpt_options[0][1]}%'
           f', Urbanisation: {rpt_options[0][2]}%')
     print(f'\tYears: {rpt_options[1][0]} to {rpt_options[1][1]}')
-    print(f'\tRegions: {rpt_options[2]}')     
-    print(f'\nPress "C" to CANCEL the report. Otherwise,')
-    if key_press():
+    print(f'\tRegions: {rpt_options[2]}')
+    print(f'\nPress "C" to CANCEL the report\n'
+    print(f'Press "W" to change Weights\n')
+    print(f'Press "Y" to change Years\n')
+    print(f'Press "R" to change Regions\n')
+    print("Otherwise")
+    if key_press(key):
         clear_screen()
+        if key.upper() in ('W','Y','R'):
+            rpt_options = input_rpt_options(weights, years, regions, stats_dict)
     else:
         log_event('Report cancelled after configuration: '+user_name)
         print('Research Report Cancelled')
