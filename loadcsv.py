@@ -44,7 +44,6 @@ def load_statistics(stats_dict, stats_code, data_row, header_row):
     value_row = data_row
     year_row = header_row
     for i in range(4, len(year_row)):
-        print(f'\n')
         annual_stats.append({
             'stats_code': stats_code,
             'year': year_row[i],

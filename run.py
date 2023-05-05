@@ -20,6 +20,7 @@ This run.py contains the functions to:
 """
 
 from datetime import datetime
+from colorama import Fore, Back, Style
 from utilities import clear_screen, key_press
 from loadcsv import import_csv2dict
 from rpt_config import input_rpt_options
@@ -55,8 +56,8 @@ def main():
     user_name = input('Please enter your name:\n')
     log_event('Application Start: '+user_name)
     print(f'\nHello {user_name}')
-    stats_dict = import_csv2dict() 
-    print(f'Your data is ready for you to configure your report.')
+    stats_dict = import_csv2dict()
+    print(f'Your data is ready for you to configure your report {user_name}')
     if key_press():
         clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
