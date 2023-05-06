@@ -34,5 +34,4 @@ def key_press():
         return False
     else:
         return True
-
 # end of copy

@@ -8,7 +8,20 @@ for deployment.
 from datetime import datetime
 import csv
 from colorama import Fore, Back, Style
-from utilities import key_press, format_value_by_type
+from utilities import key_press
+
+
+def format_value_by_type(num, type):
+    """
+    Formats float values to display format
+    according to the type of statistic
+    DISP $00,000
+    POPU 000,000
+    URBA %
+    """
+    fnum = '{:.2%}'.format(num)
+    print(type, num, fnum)
+    return True
 
 
 def output_results(calc_results, rpt_options, user_name):
@@ -28,10 +41,9 @@ def display_report(calc_results):
     for region in calc_results:
         for stat_type in calc_results[region]:
             raw_value = calc_results[region][stat_type]
-            display_value = format_value_by_type(raw_value)
-            print (stat_type,  display_value)
-    ke
-
+            display_value = format_value_by_type(raw_value, stat_type)
+            print(stat_type, display_value)
+    key_press()
     return True
 
 
@@ -45,11 +57,12 @@ def export_rpt2csv(calc_results, user_name):
     exp_file_name = rundate + '_' + user_name
     try:
         with open(exp_file_name, 'w') as rpt_ouput:
-            write_row = csv.writer(rpt_ouput)
-            write_row.writerow(list(calc_results.keys()))
+            writer = csv.writer(rpt_ouput, dialect='excel')
+            writer.writerow(list(calc_results.keys()))
             for region in calc_results:
                 for stat_type in calc_results[region]:
-                    write_row(stat_type, calc_results[region][stat_type])
+                    print(stat_type,
+                          calc_results[region][stat_type])
 #                print(list(calc_results[region].values()))
 #                for stat_type in region.values()
 #                   write_row(stat_type, region[stat_type])
