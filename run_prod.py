@@ -36,11 +36,13 @@ def log_event(event_msg):
     try:
         with open('logfile.txt', '+a') as log:
             now = datetime.now()
-            rundate = now.strftime('%m/%d/%Y %H:%M:%S%f')
+            rundate = now.strftime('%d/%m/%Y %H:%M:%S%f')
             log.write(rundate + '\t' + event_msg + '\n')
     except OSError as e:
-        print(f'Unable to open log file. Please contact system manager with '
-              f'error:\n   >>  {e.args[1]}  <<')
+        print(Fore.RED + f'Unable to open CSV file. '
+              f'Please contact system'
+              f' manager with error:\n  >>  {e.args[1]}  <<')
+        print(Fore.BLACK)
         return False
     return True
 
@@ -63,14 +65,13 @@ def main():
     if key_press():
         clear_screen()
     rpt_options = input_rpt_options(weights, years, regions, stats_dict)
-    print(rpt_options)
-    clear_screen()
     print(f'Please confirm your report configuration.\n')
     print(f'\tDisposable Income: {rpt_options[0][0]}%'
           f', Population: {rpt_options[0][1]}%'
           f', Urbanisation: {rpt_options[0][2]}%')
     print(f'\tYears: {rpt_options[1][0]} to {rpt_options[1][1]}')
     print(f'\tRegions: {rpt_options[2]}')
+    print(f'\n\n{rpt_options}\n\n')
     print(f'\nPress "C" to CANCEL the report. Otherwise,')
     if key_press():
         clear_screen()
@@ -79,7 +80,8 @@ def main():
         print('Research Report Cancelled')
         exit()
     calc_results = calc_stats(rpt_options, stats_dict)
-    if output_results(calc_results, user_name):
+    print(calc_results)
+    if output_results(calc_results, rpt_options, user_name):
         print(f'Cheers, {user_name}\n'
               f'Report Process is complete and entered into the log')
         log_event('Application Completed: ' + user_name)

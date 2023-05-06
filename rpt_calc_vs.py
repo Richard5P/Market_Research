@@ -37,7 +37,8 @@ def calc_reg_stat_data(years, regions, stats_dict):
     Assumes the stats_dict is sorted by country by region
     """
     num_years = float(int(years[1]) - int(years[0]))
-    reg_stat_data = []
+    reg_stat_data = [
+        {'region_code': None, 'stat_code': None, 'value_sum': None}]
     for country in stats_dict:
         sum_value = 0.0
         if country['region_code'] in regions:
@@ -48,7 +49,9 @@ def calc_reg_stat_data(years, regions, stats_dict):
                    statistic['year'] <= years[1]:
                     sum_value = sum_value + float(statistic['value'])
                 country_avg = sum_value / num_years
-            reg_stat_data.append([sum_region, sum_stat_code, country_avg])
+            reg_stat_data.append([{'region_code': sum_region,
+                                   'stat_code': sum_stat_code, 
+                                   'value_sum': country_avg}])
     return (reg_stat_data)
 
 

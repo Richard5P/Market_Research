@@ -4,8 +4,8 @@ importing statistical data from a csv into a
 dictionary for reporting
 """
 
-from datetime import datetime
 import csv
+from colorama import Fore, Back, Style
 
 # Contstants
 # Initialise statics dictionary with keys
@@ -91,7 +91,9 @@ def import_csv2dict():
                         continue
 
         except OSError as e:
-            print(f'Unable to open CSV file. Please contact system'
-                  f'manager with error:\n  >>  {e.args[1]}  <<')
+            print(Fore.RED + f'Unable to open CSV file. '
+                  f'Please contact system'
+                  f' manager with error:\n  >>  {e.args[1]}  <<')
+            print(Fore.BLACK)
             return False
     return (stats_dict)
