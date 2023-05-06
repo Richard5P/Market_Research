@@ -1,6 +1,6 @@
 """
 This file contains the functions and variables for
-importing statistical data from a csv into a 
+importing statistical data from a csv into a
 dictionary for reporting
 """
 

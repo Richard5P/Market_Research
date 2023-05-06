@@ -25,6 +25,7 @@ from utilities import clear_screen, key_press
 from loadcsv import import_csv2dict
 from rpt_config import input_rpt_options
 from rpt_calc import calc_stats
+from rpt_output import output_results
 
 
 def log_event(event_msg):
@@ -54,7 +55,7 @@ def main():
     years = None
     regions = None
     user_name = input('Please enter your name:\n')
-    log_event('Application Start: '+user_name)
+    log_event('Application Start: ' + user_name)
     user_name = user_name.capitalize()
     print(f'\nHello {user_name}')
     stats_dict = import_csv2dict()
@@ -77,8 +78,11 @@ def main():
         log_event('Report cancelled after configuration: '+user_name)
         print('Research Report Cancelled')
         exit()
-    rpt_results = calc_stats(rpt_options, stats_dict)
-    print(f'Report Results\n{rpt_results}')
+    calc_results = calc_stats(rpt_options, stats_dict)
+    if output_results(calc_results, user_name):
+        print(f'Cheers, {user_name}\n'
+              f'Report Process is complete and entered into the log')
+        log_event('Application Completed: ' + user_name)
 
 
 main()
