@@ -8,6 +8,7 @@ for deployment.
 from datetime import datetime
 import csv
 from colorama import Fore, Back, Style
+from utilities import key_press, format_value_by_type
 
 
 def output_results(calc_results, rpt_options, user_name):
@@ -24,6 +25,13 @@ def output_results(calc_results, rpt_options, user_name):
 
 
 def display_report(calc_results):
+    for region in calc_results:
+        for stat_type in calc_results[region]:
+            raw_value = calc_results[region][stat_type]
+            display_value = format_value_by_type(raw_value)
+            print (stat_type,  display_value)
+    ke
+
     return True
 
 
@@ -41,7 +49,7 @@ def export_rpt2csv(calc_results, user_name):
             write_row.writerow(list(calc_results.keys()))
             for region in calc_results:
                 for stat_type in calc_results[region]:
-                    print(stat_type, calc_results[region][stat_type])
+                    write_row(stat_type, calc_results[region][stat_type])
 #                print(list(calc_results[region].values()))
 #                for stat_type in region.values()
 #                   write_row(stat_type, region[stat_type])
