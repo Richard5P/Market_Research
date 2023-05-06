@@ -11,14 +11,22 @@ def calc_stat_sum(reg_stat_data):
     Sum values for each region, stat_type
     """
     stats_sum = {}
+    stats_pct_dem = 1
     for line in reg_stat_data:
         if line[0] in stats_sum.keys():
             if line[1] in stats_sum[line[0]].keys():
                 stats_sum[line[0]][line[1]] += line[2]
+                stats_pct_dem += 1
             else:
                 stats_sum[line[0]][line[1]] = line[2]
         else:
             stats_sum[line[0]] = {line[1]: line[2]}
+    """
+    for stat_sum in stats_sum:
+        print(stat_sum)
+        if stat_sum == 'URBA':
+            stat_sum['URBA'] /= stats_pct_dem
+    """
     return (stats_sum)
 
 

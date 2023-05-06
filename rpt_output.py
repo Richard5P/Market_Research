@@ -15,34 +15,27 @@ def format_value_by_type(num, type):
     """
     Formats float values to display format
     according to the type of statistic
-    DISP $00,000
+    INCO $00,000
     POPU 000,000
     URBA %
     """
-    fnum = '{:.2%}'.format(num)
-    print(type, num, fnum)
-    return True
-
-
-def output_results(calc_results, rpt_options, user_name):
-    """
-    Calls functions to write report to:
-       csv file - formatted as a spreadsheet
-       display to the terminal for user to review
-    """
-    if export_rpt2csv(calc_results, user_name) and\
-       display_report(calc_results):
-        return True
-    else:
-        return False
+    out_num = 0.0
+    if type == 'INCO':
+        out_num = '${:,.2f}'.format(num)
+    elif type == 'POPU':
+        out_num = '{:,}'.format(num)
+    elif type == "URBA":
+        out_num = '{:0.2%}'.format(num/100)
+    return out_num
 
 
 def display_report(calc_results):
     for region in calc_results:
+        print(f'\n{region}\n')
         for stat_type in calc_results[region]:
             raw_value = calc_results[region][stat_type]
             display_value = format_value_by_type(raw_value, stat_type)
-            print(stat_type, display_value)
+            print(f'{stat_type}: {display_value}')
     key_press()
     return True
 
@@ -61,11 +54,9 @@ def export_rpt2csv(calc_results, user_name):
             writer.writerow(list(calc_results.keys()))
             for region in calc_results:
                 for stat_type in calc_results[region]:
-                    print(stat_type,
-                          calc_results[region][stat_type])
-#                print(list(calc_results[region].values()))
-#                for stat_type in region.values()
-#                   write_row(stat_type, region[stat_type])
+                    out_row = [stat_type,
+                               calc_results[region][stat_type]]
+                    writer.writerow(out_row)
         return True
 
     except OSError as e:
@@ -73,4 +64,17 @@ def export_rpt2csv(calc_results, user_name):
               f' Please contact system'
               f' manager with error:\n  >>  {e.args[1]}  <<')
         print(Fore.BLACK)
+        return False
+
+
+def output_results(calc_results, rpt_options, user_name):
+    """
+    Calls functions to write report to:
+       csv file - formatted as a spreadsheet
+       display to the terminal for user to review
+    """
+    if export_rpt2csv(calc_results, user_name) and\
+       display_report(calc_results):
+        return True
+    else:
         return False

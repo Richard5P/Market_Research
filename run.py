@@ -71,7 +71,6 @@ def main():
           f', Urbanisation: {rpt_options[0][2]}%')
     print(f'\tYears: {rpt_options[1][0]} to {rpt_options[1][1]}')
     print(f'\tRegions: {rpt_options[2]}')
-    print(f'\n\n{rpt_options}\n\n')
     print(f'\nPress "C" to CANCEL the report. Otherwise,')
     if key_press():
         clear_screen()
@@ -80,10 +79,10 @@ def main():
         print('Research Report Cancelled')
         exit()
     calc_results = calc_stats(rpt_options, stats_dict)
-    print(calc_results)
     if output_results(calc_results, rpt_options, user_name):
-        print(f'Cheers, {user_name}\n'
-              f'Report Process is complete and entered into the log')
+        print(Fore.CYAN + f'\nCheers, {user_name}\n'
+              f'Report Process is complete and '
+              f'your csv file is ready')
         log_event('Application Completed: ' + user_name)
 
 
