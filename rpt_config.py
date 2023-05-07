@@ -130,7 +130,8 @@ def input_weights():
     Prompts user for study weight report configuration
     """
     print(Fore.RED + f'This feature will be in next release\n')
-    print(Fore.BLUE + f'There are 3 report studies available for your report:\n'
+    print(Fore.BLUE + f'There are 3 report studies '
+          f'available for your report:\n'
           f'\t Disposable Income, Population, Urbanisation\n')
     print(f'Please enter 3 numbers which total to 100\n'
           f'  for weighting the percent of each study')
@@ -146,9 +147,10 @@ def input_weights():
             else:
                 return ([disp_pct, popu_pct, urba_pct])
         except InvalidPercents:
-            print(Fore.RED + '\nAmounts entered do not sum to 100, please try again')
+            print(Fore.RED + f'\nAmounts entered do not sum to 100,'
+                  f' please try again')
         except ValueError:
-            print(Fore.RED + '\nNumbers only, please try again')
+            print(Fore.RED + f'\nNumbers only, please try again')
 
 
 def input_rpt_options(weights, years, regions, stats_dict):
