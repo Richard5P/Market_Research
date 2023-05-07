@@ -80,7 +80,7 @@ def main():
         exit()
     calc_results = calc_stats(rpt_options, stats_dict)
     if output_results(calc_results, rpt_options, user_name):
-        print(Fore.CYAN + f'\nCheers, {user_name}\n'
+        print(Fore.YELLOW + f'\nCheers, {user_name}\n'
               f'Report Process is complete and '
               f'your csv file is ready')
         log_event('Application Completed: ' + user_name)

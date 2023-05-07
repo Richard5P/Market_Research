@@ -23,7 +23,7 @@ def format_value_by_type(num, type):
     if type == 'INCO':
         out_num = '${:,.2f}'.format(num)
     elif type == 'POPU':
-        out_num = '{:,}'.format(num)
+        out_num = '{:,f}'.format(num)
     elif type == "URBA":
         out_num = '{:0.2%}'.format(num/100)
     return out_num

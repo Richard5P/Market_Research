@@ -21,12 +21,6 @@ def calc_stat_sum(reg_stat_data):
                 stats_sum[line[0]][line[1]] = line[2]
         else:
             stats_sum[line[0]] = {line[1]: line[2]}
-    """
-    for stat_sum in stats_sum:
-        print(stat_sum)
-        if stat_sum == 'URBA':
-            stat_sum['URBA'] /= stats_pct_dem
-    """
     return (stats_sum)
 
 

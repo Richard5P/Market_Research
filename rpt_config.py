@@ -1,4 +1,5 @@
 import datetime
+from colorama import Fore, Back, Style
 from utilities import key_press, clear_screen
 
 """
@@ -59,7 +60,8 @@ def input_years(stats_dict):
     Prompts user for date range report configuration
     """
     range_of_years = years_min_max(stats_dict)
-    print(f'\nNow set the range of years for your report')
+    print(Fore.WHITE + ' \n')
+    print(f'Now set the range of years for your report')
     print(f'\nPlease enter a start year and an end year between '
           f'{range_of_years[0]} to: {range_of_years[1]} (inclusive)')
     years_unset = True
@@ -96,7 +98,8 @@ def input_regions(stats_dict):
     Prompts user to select region(s) for report configuration
     """
     region_list = regions_loaded(stats_dict)
-    print(f'\nNow choose the region or regions to report on.')
+    print(Fore.WHITE + ' \n')
+    print(f'Now choose the region or regions to report on.\n')
     print(f'Please enter one or more of the following region codes.')
     print(f'If you would like to report on more than one region, then '
           f'please separate them with commas, without spaces,'
@@ -126,13 +129,15 @@ def input_weights():
     """
     Prompts user for study weight report configuration
     """
-    print(f'There are 3 report studies available for your report:\n'
+    print(Fore.RED + f'This feature will be in next release\n')
+    print(Fore.BLUE + f'There are 3 report studies available for your report:\n'
           f'\t Disposable Income, Population, Urbanisation\n')
     print(f'Please enter 3 numbers which total to 100\n'
           f'  for weighting the percent of each study')
     pct_unset = True
     while pct_unset:
         try:
+            print(Fore.BLUE + '')
             disp_pct = int(input('Disposable Income %:\n'))
             popu_pct = int(input('Population %:\n'))
             urba_pct = int(input('Urbanisation %:\n'))
@@ -141,9 +146,9 @@ def input_weights():
             else:
                 return ([disp_pct, popu_pct, urba_pct])
         except InvalidPercents:
-            print('\nAmounts entered do not sum to 100, please try again')
+            print(Fore.RED + '\nAmounts entered do not sum to 100, please try again')
         except ValueError:
-            print('\nNumbers only, please try again')
+            print(Fore.RED + '\nNumbers only, please try again')
 
 
 def input_rpt_options(weights, years, regions, stats_dict):
