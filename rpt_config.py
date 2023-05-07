@@ -60,7 +60,8 @@ def input_years(stats_dict):
             start_year = input('Report start year:\n')
             end_year = input('Report end year:\n')
             if not (start_year >= range_of_years[0] and
-               end_year <= range_of_years[1]):
+               end_year <= range_of_years[1] and
+               start_year > end_year):
                 raise InvalidDateRange
             else:
                 return ([start_year, end_year])
@@ -123,8 +124,9 @@ def input_weights():
     print(Fore.BLUE + f'There are 3 report studies '
           f'available for your report:\n'
           f'\t Disposable Income, Population, Urbanisation\n')
-    print(f'Please enter 3 numbers which total to 100\n'
-          f'  for weighting the percent of each study')
+    print(f'Please enter 3 values 1 for each study\n'
+          f'each value represents the percent out of 100% \n'
+          f'to be applied to the study values')
     pct_unset = True
     while pct_unset:
         try:

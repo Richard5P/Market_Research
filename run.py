@@ -28,6 +28,40 @@ from rpt_calc import calc_stats
 from rpt_output import output_results
 
 
+class InvalidName(Exception):
+    """
+    Raise when name contains non-alpha characters or
+    is less than 3 or more than 10 characters
+    """
+    pass
+
+
+def input_name():
+    """
+    Validates name entered to conform to
+    - letters only
+    - minimum of 3 char
+    - maximum of 10 char (for log file name)
+    """
+    name_unset = True
+    while name_unset:
+        try:
+            name = input('Please enter your name:\n')
+            if not name.isalpha():
+                raise InvalidName
+            elif len(name) < 3:
+                raise InvalidName
+            elif len(name) > 10:
+                raise InvalidName
+            else:
+                return name.capitalize()
+        except InvalidName:
+            print(Fore.RED + f'\nName can only contain alphabetic characters \n'
+                  f'with a 3 char minimum and 10 char maximum \n'
+                  f'please try again')
+            print(Fore.WHITE + ' ')
+
+
 def log_event(event_msg):
     """
     Opens or creates a log file to record errors and operation results
@@ -36,7 +70,7 @@ def log_event(event_msg):
     try:
         with open('logfile.txt', '+a') as log:
             now = datetime.now()
-            rundate = now.strftime('%d/%m/%Y %H:%M:%S%f')
+            rundate = now.strftime('%d/%m/%Y_%H:%M:%S%f')
             log.write(rundate + '\t' + event_msg + '\n')
     except OSError as e:
         print(Fore.RED + f'Unable to open CSV file. '
@@ -52,13 +86,13 @@ def main():
     Entry and exit for the application
     Container and controller for launch of application functions
     """
-    # variables to be passed to reports
-    weights = None
+#   variables to be passed to reports
+#   weights = None    for future release
     years = None
     regions = None
-    user_name = input('Please enter your name:\n')
+    user_name = input_name()
     log_event('Application Start: ' + user_name)
-    user_name = user_name.capitalize()
+    user_name = user_name
     print(f'\nHello {user_name}')
     stats_dict = import_csv2dict()
     print('Your data is ready for you to configure your report.')
