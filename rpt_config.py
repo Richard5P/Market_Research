@@ -35,20 +35,10 @@ def years_min_max(stat_dict):
     """
     Returns the earliest and lastest statistic years in the dictionary
     """
-#   years_loaded = {stat['year'] for stat in stat_dict['statistic']}
     years_loaded = set()
     for country in stat_dict:
         for country_stats in country['statistic']:
             years_loaded.add(country_stats['year'])
-    """
-    for code in stat_dict:
-        if code['stats_code'] == 'popu':
-            for country in code['country_stats']:
-                for stat in country['statistic']:
-                    years_loaded.add(stat['year'])
-        else:
-            continue
-    """
     years_loaded.remove(None)
     first_year = min(years_loaded)
     last_year = max(years_loaded)
