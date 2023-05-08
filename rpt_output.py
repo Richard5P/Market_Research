@@ -36,7 +36,6 @@ def display_report(calc_results):
             raw_value = calc_results[region][stat_type]
             display_value = format_value_by_type(raw_value, stat_type)
             print(f'{stat_type}: {display_value}')
-    key_press()
     return True
 
 

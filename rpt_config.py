@@ -51,7 +51,7 @@ def input_years(stats_dict):
     """
     range_of_years = years_min_max(stats_dict)
     print(Fore.WHITE + ' \n')
-    print(f'Now set the range of years for your report')
+    print(f'First, set the range of years for your report')
     print(f'\nPlease enter a start year and an end year between '
           f'{range_of_years[0]} to: {range_of_years[1]} (inclusive)')
     years_unset = True
@@ -129,7 +129,7 @@ def input_rpt_options(years, regions, stats_dict):
     Collect report options from user
     option functions return a list of values
     """
-    print('Next step is to configure your report\n')
+    print('Next step is to configure your report')
     years = input_years(stats_dict)
     regions = input_regions(stats_dict)
     return ([years, regions])

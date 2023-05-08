@@ -36,6 +36,38 @@ class InvalidName(Exception):
     pass
 
 
+def run_report(years, regions, stats_dict, user_name):
+    """
+    loops report process until user exits
+    """
+    run_unset = True
+    while run_unset:
+        rpt_options = input_rpt_options(years, regions, stats_dict)
+        print(f'\n\nPlease confirm your report configuration.\n')
+        print(f'\tYears: {rpt_options[0][0]} to {rpt_options[0][1]}')
+        print(f'\tRegions: {rpt_options[1]}')
+        print(f'\nPress "C" to CANCEL the report. Otherwise,')
+        if key_press():
+            clear_screen()
+        else:
+            log_event('Report cancelled after configuration: '+user_name)
+            print('Research Report Cancelled')
+            exit()
+        calc_results = calc_stats(rpt_options, stats_dict)
+        if output_results(calc_results, rpt_options, user_name):
+            print(Fore.YELLOW + f'\nCheers, {user_name}\n'
+                f'Report Process is complete and '
+                f'your csv file is ready')
+            log_event('Report Completed: ' + user_name)
+            print(f'Press "C" to CANCEL and exit the report. Otherwise,')
+            if key_press():
+                clear_screen()
+                print(Style.RESET_ALL)
+                pass
+            else:
+                exit()
+
+
 def input_name():
     """
     Validates name entered to conform to
@@ -117,23 +149,7 @@ def main():
     print('Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
-    rpt_options = input_rpt_options(years, regions, stats_dict)
-    print(f'\n\nPlease confirm your report configuration.\n')
-    print(f'\tYears: {rpt_options[0][0]} to {rpt_options[0][1]}')
-    print(f'\tRegions: {rpt_options[1]}')
-    print(f'\nPress "C" to CANCEL the report. Otherwise,')
-    if key_press():
-        clear_screen()
-    else:
-        log_event('Report cancelled after configuration: '+user_name)
-        print('Research Report Cancelled')
-        exit()
-    calc_results = calc_stats(rpt_options, stats_dict)
-    if output_results(calc_results, rpt_options, user_name):
-        print(Fore.YELLOW + f'\nCheers, {user_name}\n'
-              f'Report Process is complete and '
-              f'your csv file is ready')
-        log_event('Report Completed: ' + user_name)       
+        run_report(years, regions, stats_dict, user_name)
 
 
 main()
