@@ -64,13 +64,12 @@ def input_years(stats_dict):
             elif end_year > range_of_years[1]:
                 raise InvalidDateRange
             elif start_year >= end_year:
-                print(start_year, end_year)
                 raise InvalidDateRange
             else:
                 return ([start_year, end_year])
         except InvalidDateRange:
-            print(Fore.RED + f'\nYears must be between {range_of_years[0]} and '
-                  f'{range_of_years[1]}\n'
+            print(Fore.RED + f'\nYears must be between {range_of_years[0]}'
+                  f' and {range_of_years[1]}\n'
                   f'with the start date prior to the end date.\n'
                   f'Please try again')
             print(Style.RESET_ALL)
