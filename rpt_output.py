@@ -46,7 +46,7 @@ def export_rpt2csv(calc_results, user_name):
     """
     now = datetime.now()
     rundate = now.strftime('%d%m%Y_%H%M%f')
-    exp_file_name = rundate + '_' + user_name
+    exp_file_name = rundate + '_' + user_name + '.csv'
     try:
         with open(exp_file_name, 'w') as rpt_ouput:
             writer = csv.writer(rpt_ouput, dialect='excel')
