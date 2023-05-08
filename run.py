@@ -56,8 +56,8 @@ def run_report(years, regions, stats_dict, user_name):
         calc_results = calc_stats(rpt_options, stats_dict)
         if output_results(calc_results, rpt_options, user_name):
             print(Fore.YELLOW + f'\nCheers, {user_name}\n'
-                f'Report Process is complete and '
-                f'your csv file is ready')
+                  f'Report Process is complete and '
+                  f'your csv file is ready')
             log_event('Report Completed: ' + user_name)
             print(f'Press "C" to CANCEL and exit the report. Otherwise,')
             if key_press():
@@ -88,7 +88,8 @@ def input_name():
             else:
                 return name.capitalize()
         except InvalidName:
-            print(Fore.RED + f'\nName can only contain alphabetic characters \n'
+            print(Fore.RED +
+                  f'\nName can only contain alphabetic characters \n'
                   f'with a 3 char minimum and 10 char maximum \n'
                   f'please try again')
             print(Style.RESET_ALL)
@@ -135,7 +136,8 @@ def main():
     print('You will be able to configure the reporting output by')
     print(' Range of Years and Country Region')
     print(Style.BRIGHT)
-    print(Fore.LIGHTYELLOW_EX + 'Note: For this prototype Countries are grouped into Regions')
+    print(Fore.LIGHTYELLOW_EX + 'Note: For this prototype Countries are '
+          'grouped into Regions')
     print(' and you should be provided with a list of those groups.')
     print(f' The next release will display them here.\n')
     print(Style.RESET_ALL)
