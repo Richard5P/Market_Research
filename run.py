@@ -55,8 +55,7 @@ def run_report(years, regions, stats_dict, user_name):
             exit()
         calc_results = calc_stats(rpt_options, stats_dict)
         if output_results(calc_results, rpt_options, user_name):
-            print(Fore.YELLOW + f'\nCheers, {user_name}\n'
-                  f'Report Process is complete and '
+            print(Fore.YELLOW + f'Report Process is complete and '              
                   f'your csv file is ready')
             log_event('Report Completed: ' + user_name)
             print(f'Press "C" to CANCEL and exit the report. Otherwise,')
@@ -65,6 +64,7 @@ def run_report(years, regions, stats_dict, user_name):
                 print(Style.RESET_ALL)
                 pass
             else:
+                print(Fore.YELLOW + f'\nCheers, {user_name}\n')
                 exit()
 
 
