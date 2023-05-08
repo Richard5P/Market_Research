@@ -46,7 +46,7 @@ def export_rpt2csv(calc_results, user_name):
     formated for spreadsheet
     """
     now = datetime.now()
-    rundate = now.strftime('%d%m%Y_%H%M:%f')
+    rundate = now.strftime('%d%m%Y_%H%M%f')
     exp_file_name = rundate + '_' + user_name
     try:
         with open(exp_file_name, 'w') as rpt_ouput:
@@ -63,7 +63,7 @@ def export_rpt2csv(calc_results, user_name):
         print(Fore.RED + f'Unable to open CSV file: {exp_file_name}\n'
               f' Please contact system'
               f' manager with error:\n  >>  {e.args[1]}  <<')
-        print(Fore.BLACK)
+        print(Style.RESET_ALL)
         return False
 
 

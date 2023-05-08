@@ -59,20 +59,15 @@ def input_years(stats_dict):
         try:
             start_year = input('Report start year:\n')
             end_year = input('Report end year:\n')
-            if start_year < range_of_years[0]:
-                raise InvalidDateRange
-            elif end_year > range_of_years[1]:
-                raise InvalidDateRange
-            elif start_year >= end_year:
-                print(start_year, end_year)
+            if not (start_year >= range_of_years[0] and
+               end_year <= range_of_years[1] and
+               start_year > end_year):
                 raise InvalidDateRange
             else:
                 return ([start_year, end_year])
         except InvalidDateRange:
             print(Fore.RED + f'\nYears must be between {range_of_years[0]} and '
-                  f'{range_of_years[1]}\n'
-                  f'with the start date prior to the end date.\n'
-                  f'Please try again')
+                  f'{range_of_years[1]}, please try again')
             print(Style.RESET_ALL)
 
 
@@ -95,18 +90,18 @@ def input_regions(stats_dict):
     Prompts user to select region(s) for report configuration
     """
     region_list = regions_loaded(stats_dict)
-    print(Fore.WHITE + ' \n')
+    print(Style.RESET_ALL)
     print(f'Now choose the region or regions to report on.\n')
     print(f'Please enter one or more of the following region codes.')
-    print(f'If you would like to report on more than one region, then\n'
+    print(f'If you would like to report on more than one region, then '
           f'please separate them with commas, without spaces,'
-          f' similar to the list below.')
+          f' similarly to the list below.')
     display_list = ','.join([str(elem) for elem in region_list])
     print(display_list)
     regions_unset = True
     while regions_unset:
         try:
-            input_regions = (input('Enter Report region(s):\n')).upper()
+            input_regions = (input('Report region(s):\n')).upper()
             input_regions = input_regions.rsplit(',')
             report_regions = list(set(input_regions) & set(region_list))
             if (len(report_regions) == len(input_regions)):
@@ -119,17 +114,47 @@ def input_regions(stats_dict):
                   f'Valid region codes are: \n {display_list}\n'
                   f'You entered: \n {input_regions}\n'
                   f'please try again')
-            print(Style.RESET_ALL)
+                print(Style.RESET_ALL)
             continue
     return (report_regions)
 
 
-def input_rpt_options(years, regions, stats_dict):
+def input_weights():
+    """
+    Prompts user for study weight report configuration
+    """
+    print(Fore.RED + f'This feature will be in next release\n')
+    print(Fore.BLUE + f'There are 3 report studies '
+          f'available for your report:\n'
+          f'\t Disposable Income, Population, Urbanisation\n')
+    print(f'Please enter 3 values 1 for each study\n'
+          f'each value represents the percent out of 100% \n'
+          f'to be applied to the study values')
+    pct_unset = True
+    while pct_unset:
+        try:
+            print(Fore.BLUE + '')
+            disp_pct = int(input('Disposable Income %:\n'))
+            popu_pct = int(input('Population %:\n'))
+            urba_pct = int(input('Urbanisation %:\n'))
+            if ((disp_pct + popu_pct + urba_pct) != 100):
+                raise InvalidPercents
+            else:
+                return ([disp_pct, popu_pct, urba_pct])
+        except InvalidPercents:
+            print(Fore.RED + f'\nAmounts entered do not sum to 100,'
+                  f' please try again')
+        except ValueError:
+            print(Fore.RED + f'\nNumbers only, please try again')
+
+
+def input_rpt_options(weights, years, regions, stats_dict):
     """
     Collect report options from user
     option functions return a list of values
     """
     print('Next step is to configure your report\n')
+    weights = input_weights()
     years = input_years(stats_dict)
     regions = input_regions(stats_dict)
-    return ([years, regions])
+    return ([weights, years, regions])

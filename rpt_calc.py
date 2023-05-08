@@ -54,33 +54,23 @@ def calc_reg_stat_data(years, regions, stats_dict):
     return (reg_stat_data)
 
 
-def calc_report_values(weights, reg_sta_sum):
-    """
-    Weights statistics for reporting
-    """
-    return (reg_sta_sum)
-
-
-def calc_report_data(weights, years, regions, stats_dict):
+def calc_report_data(years, regions, stats_dict):
     """
     Calls functions to:
         1. Calculate country value averages for date range
            and sum it by stat_type and region
         2. Sum the stat_type and region values
-        3. Weight the summed values for reporting hierarchy
     returns the report ready list
     """
     reg_stat_data = calc_reg_stat_data(years, regions, stats_dict)
     reg_stat_sum = calc_stat_sum(reg_stat_data)
-    selection_results = calc_report_values(weights, reg_stat_sum)
-    return (selection_results)
+    return (reg_stat_sum)
 
 
 def calc_stats(report_options, stats_dict):
     """
     """
-    weights = report_options[0]
-    years = report_options[1]
-    regions = report_options[2]
-    selection_results = calc_report_data(weights, years, regions, stats_dict)
+    years = report_options[0]
+    regions = report_options[1]
+    selection_results = calc_report_data(years, regions, stats_dict)
     return (selection_results)

@@ -90,25 +90,9 @@ def main():
 #   weights = None    for future release
     years = None
     regions = None
-    print(Fore.WHITE + Back.BLUE + 'Thank you for participating in the '
-          'Marketing Research Application trial\n')
-    print('The application will address the department request for ')
-    print('ad-hoc modeling of demographic statics downloaded from statistical')
-    print(f' agencies and summarised for idependent spreadsheet modeling.\n')
-    print('This prototype imports annual statistics by country as provided by')
-    print(f'The World Bank for 10 years of three demographics:\n')
-    print(f'\tDisposable Income')
-    print(f'\tPopulation')
-    print(f'\tUrbanisation')
-    print('You will be able to configure the reporting output by')
-    print(' Range of Years and Country Region')
-    print(Style.BRIGHT)
-    print(Fore.LIGHTYELLOW_EX + 'Note: For this prototype Countries are grouped into Regions')
-    print(' and you should be provided with a list of those groups.')
-    print(f' The next release will display them here.\n')
+    print(Fore.WHITE + Back.BLUE + 'Test')
+    key_press()
     print(Style.RESET_ALL)
-    if key_press():
-        clear_screen()
     user_name = input_name()
     log_event('Application Start: ' + user_name)
     user_name = user_name
@@ -117,10 +101,13 @@ def main():
     print('Your data is ready for you to configure your report.')
     if key_press():
         clear_screen()
-    rpt_options = input_rpt_options(years, regions, stats_dict)
-    print(f'\n\nPlease confirm your report configuration.\n')
-    print(f'\tYears: {rpt_options[0][0]} to {rpt_options[0][1]}')
-    print(f'\tRegions: {rpt_options[1]}')
+    rpt_options = input_rpt_options(weights, years, regions, stats_dict)
+    print(f'Please confirm your report configuration.\n')
+    print(f'\tDisposable Income: {rpt_options[0][0]}%'
+          f', Population: {rpt_options[0][1]}%'
+          f', Urbanisation: {rpt_options[0][2]}%')
+    print(f'\tYears: {rpt_options[1][0]} to {rpt_options[1][1]}')
+    print(f'\tRegions: {rpt_options[2]}')
     print(f'\nPress "C" to CANCEL the report. Otherwise,')
     if key_press():
         clear_screen()
@@ -133,7 +120,7 @@ def main():
         print(Fore.YELLOW + f'\nCheers, {user_name}\n'
               f'Report Process is complete and '
               f'your csv file is ready')
-        log_event('Report Completed: ' + user_name)       
+        log_event('Application Completed: ' + user_name)
 
 
 main()
