@@ -31,25 +31,9 @@ demographic statistic files which will then be directly loaded into the app with
     - [Scope](#scope)
     - [Structure](#structure)
 2. [Features](#features)
-
-5. <details open>
-    <summary><a href="#deployment">Deployment</a></summary>
-
-    <li><details>
-    <summary><a href="#github-deployment">Github Deployment</a></summary>
-
-    - [Github Preparation](#github-preparation)
-    - [Github Instructions](#github-instructions)
-    </details></li>
-    </ul>
-</details>
-
-6. <details open>
-    <summary><a href="#credit-and-contact">Credit and Contact</a></summary>
-
-    - [Content](#content)
-
-</details>
+3. [Testing](#testing)
+4. [Deployment](#deployment)
+5. [Credit and Contact](#credit-and-contact)
 
 # UX Planes
 # Background Story
@@ -94,17 +78,59 @@ Based on the timeline, budget, and resources the scope was further refined to:
 [Process Design](https://drive.google.com/file/d/1aRZ9r7KIuD9CYvLSRKJ-CEYSc5KUKemT/view?usp=share_link)
 
 # Features
-- App introduction
+## App introduction
 ![Introduction Screen](/assets/docs/Start_Screen.png)
-- User name capture (and validation) for:
+
+
+## User name capture (and validation) for:
     - log entry recording
     - output file naming
     - app personalisation
 ![Name Validation Screen](/assets/docs/Name_Validation.png)
-- Report Configuration (and validation)
-    - Range of years
+
+
+## Report Configuration (and validation)
+### Range of years
 ![Range of Years - validation 1](/assets/docs/Year_Validation1.png)
 ![Range of Years - validation 2](/assets/docs/Year_Validation2.png)
-    - Regions
+
+### Regions
 ![Region selection - validation 1](/assets/docs/Region_Validation1.png)
 ![Region selection - validation 2](/assets/docs/Region_Validation2.png)
+
+
+## Summary report output
+### display
+![Report output screen](/assets/docs/Rpt_Output.png)
+### csv file
+![Report output CSV file](/assets/docs/Rpt_CSV.png)
+
+#Testing
+Unit testing was done at the completion of each function and a full app set of 
+tests was completed before deployment.
+Although, mainly due to issues (loss of records and time) with CodeAnywhere, below is a link to one of my testing logs with examples of the tests I ran
+and the recent results.
+
+[Test Logs](https://docs.google.com/spreadsheets/d/12p2A_JUdu9wUnjL-U9RsZCn-rrAWA0j2OMrFc7A6VPs/edit?usp=share_link)
+
+Name Validation Example
+![Name error example](/assets/docs/Name%20Errors.png)
+
+#Deployment
+### Github 
+**Requirements:**
+- A free GitHub account.
+
+### Github Instructions
+1. Log in to your GitHub account.
+2. navigate to [https://github.com/Richard5P/market_research](https://github.com/Richard5P/market_research).
+3. You can set up your own repository and copy or clone it, or you fork the repository.
+4. `git add`, `git commit` and `git push` to a GitHub repository, if necessary.
+5. GitHub pages will update from the master branch by default.
+6. Go to the **Settings** page of the repository.
+7. Scroll down to the **Github Pages** section.
+8. Select the Master Branch as the source and **Confirm** the selection.
+
+### Heroku
+No account needed to run.
+To run go to [https://market-research.herokuapp.com/](https://market-research.herokuapp.com/)
