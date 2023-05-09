@@ -94,8 +94,17 @@ Based on the timeline, budget, and resources the scope was further refined to:
 [Process Design](https://drive.google.com/file/d/1aRZ9r7KIuD9CYvLSRKJ-CEYSc5KUKemT/view?usp=share_link)
 
 # Features
-- User name capture for:
+- App introduction
+![Introduction Screen](/assets/docs/Start_Screen.png)
+- User name capture (and validation) for:
     - log entry recording
     - output file naming
     - app personalisation
-    
+![Name Validation Screen](/assets/docs/Name_Validation.png)
+- Report Configuration (and validation)
+    - Range of years
+![Range of Years - validation 1](/assets/docs/Year_Validation1.png)
+![Range of Years - validation 2](/assets/docs/Year_Validation2.png)
+    - Regions
+![Region selection - validation 1](/assets/docs/Region_Validation1.png)
+![Region selection - validation 2](/assets/docs/Region_Validation2.png)
