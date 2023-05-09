@@ -31,9 +31,10 @@ demographic statistic files which will then be directly loaded into the app with
     - [Scope](#scope)
     - [Structure](#structure)
 2. [Features](#features)
-3. [Testing](#testing)
-4. [Deployment](#deployment)
-5. [Credit and Contact](#credit-and-contact)
+3. [Technologies Used](#technologies-used)
+4. [Testing](#testing)
+5. [Deployment](#deployment)
+6. [Credit and Contact](#credit-and-contact)
 
 # UX Planes
 # Background Story
@@ -105,7 +106,18 @@ Based on the timeline, budget, and resources the scope was further refined to:
 ### csv file
 ![Report output CSV file](/assets/docs/Rpt_CSV.png)
 
-#Testing
+
+# Technogies Used
+- Coding
+    - Python 3.8.1
+        - pip getch
+        - pip colorama
+- Development environment
+    - github
+    - gitpod
+    - codeanywhere
+
+# Testing
 Unit testing was done at the completion of each function and a full app set of 
 tests was completed before deployment.
 Although, mainly due to issues (loss of records and time) with CodeAnywhere, below is a link to one of my testing logs with examples of the tests I ran
@@ -116,7 +128,7 @@ and the recent results.
 Name Validation Example
 ![Name error example](/assets/docs/Name%20Errors.png)
 
-#Deployment
+# Deployment
 ### Github 
 **Requirements:**
 - A free GitHub account.
@@ -134,3 +146,14 @@ Name Validation Example
 ### Heroku
 No account needed to run.
 To run go to [https://market-research.herokuapp.com/](https://market-research.herokuapp.com/)
+
+## Credits and Contact
+### Content
+- GeeksforGeeks
+- StackOverflow
+- Tomislav Dukez https://github.com/tomdu3  discord --} tomdu3#8223
+Any code utilised from a site is documented and credited within the code.
+No credit is required for the other media other than provided by source.
+
+### Contact
+Please feel free to contact me at `richard.deutsch@gmail.com`
