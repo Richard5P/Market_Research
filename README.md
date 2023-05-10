@@ -118,8 +118,12 @@ Based on the timeline, budget, and resources the scope was further refined to:
     - codeanywhere
 
 # Testing
-Unit testing was done at the completion of each function and a full app set of 
-tests was completed before deployment.
+Unit testing was done at the completion of each function and a full app set of tests was completed before deployment.
+
+Moreover, it should be noted that as a prototype using prepared data files
+this app contains no validation of the contents of the input files. In a
+production release this must be covered (garbage in, garbage out).
+
 Although, mainly due to issues (loss of records and time) with CodeAnywhere, below is a link to one of my testing logs with examples of the tests I ran
 and the recent results.
 
@@ -127,6 +131,10 @@ and the recent results.
 
 Name Validation Example
 ![Name error example](/assets/docs/Name%20Errors.png)
+
+## Known Issues
+There are no known outstanding issues based on the results of the 
+tests performed todate.
 
 # Deployment
 ### Github 
